@@ -38,7 +38,7 @@ namespace Day_1
                     case 6:
                         break;
                     default:
-                        Console.WriteLine("Invalid Choice");
+                        Console.WriteLine("\nInvalid Choice\n");
                         break;
                 }
             }
@@ -48,49 +48,103 @@ namespace Day_1
         public static void exercise1()
         {
             string sample;
-            Console.WriteLine("Enter a string");
+            Console.WriteLine("Enter a string:");
             sample = Console.ReadLine();
             Console.WriteLine(sample);
         }
 
         public static void exercise2()
         {
-            int usernum;
-            Console.WriteLine("Enter a number");
-            usernum = int.Parse(Console.ReadLine());
-            usernum++;
-            Console.WriteLine(usernum);
+            Console.WriteLine("Enter a number: ");
+            bool goodnum = int.TryParse(Console.ReadLine(), out int usernum);
+            if (goodnum)
+            {
+                usernum++;
+                Console.WriteLine(usernum);
+            }
+            else
+            {
+                Console.Write("Invalid number. Try again with a valid integer. ");
+                exercise2();
+            }
+            
         }
 
         public static void exercise3()
         {
             double usernum;
-            Console.WriteLine("Enter a number");
-            usernum = double.Parse(Console.ReadLine());
-            usernum = usernum + 0.5;
-            Console.WriteLine(usernum);
+
+            Console.WriteLine("Enter a number: ");
+            bool goodnum = double.TryParse(Console.ReadLine(), out usernum);
+            if (goodnum)
+            {
+                usernum = usernum + 0.5;
+                Console.WriteLine(usernum);
+            }
+            else
+            {
+                Console.Write("Invalid number. Try again with a valid number. ");
+                exercise3();
+            }
         }
 
         public static void exercise4()
         {
-            double usernum1, usernum2;
-            Console.WriteLine("Enter a number:");
-            usernum1 = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter another number:");
-            usernum2 = double.Parse(Console.ReadLine());
-            Console.WriteLine($"The sum is {usernum1 + usernum2}");
+            double userNum1 = 0;
+            double userNum2 = 0;
+            bool goodNum1 = false;
+            bool goodNum2 = false;
+            while (goodNum1 == false)
+            {
+                Console.WriteLine("Enter a number:");
+                goodNum1 = double.TryParse(Console.ReadLine(), out userNum1);
+                if (goodNum1 == false)
+                {
+                    Console.Write("Invalid number.  Try again. ");
+                }
+            }
+            while (goodNum2 == false)
+            {
+                Console.WriteLine("Enter another number: ");
+                goodNum2 = double.TryParse(Console.ReadLine(), out userNum2);
+                if (goodNum2 == false)
+                {
+                    Console.Write("Invalid number.  Try again. ");
+                }
+            }
+
+            Console.WriteLine($"The sum is {userNum1 + userNum2}.");
         }
 
         public static void exercise5()
         {
-            double usernum1, usernum2;
-            Console.WriteLine("Enter a number:");
-            usernum1 = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter another number:");
-            usernum2 = double.Parse(Console.ReadLine());
-            Console.WriteLine($"The product is {usernum1 * usernum2}");
-        }
+            double userNum1 = 0;
+            double userNum2 = 0;
+            bool goodNum1 = false;
+            bool goodNum2 = false;
+            while (goodNum1 == false)
+            {
+                Console.WriteLine("Enter a number:");
+                goodNum1 = double.TryParse(Console.ReadLine(), out userNum1);
+                if (goodNum1 == false)
+                {
+                    Console.Write("Invalid number.  Try again. ");
+                }
+            }
+            while (goodNum2 == false)
+            {
+                Console.WriteLine("Enter another number:");
+                goodNum2 = double.TryParse(Console.ReadLine(), out userNum2);
+                if (goodNum2 == false)
+                {
+                    Console.Write("Invalid number.  Try again. ");
+                }
+            }
 
+            Console.WriteLine($"The product is {userNum1 * userNum2}.");
+        }
     }
 
 }
+
+
